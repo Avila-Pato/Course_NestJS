@@ -1,14 +1,10 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Delete, Get, Patch, Post, Put } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 
 @Controller({})
 export class TasksController {
-    tasksService: TasksService;
-
-
-    constructor(private taskService: TasksService) {
-       
-    }
+   
+    constructor(private tasksService: TasksService) {}
 
     // creando rutas
              @Get('/tasks')
@@ -16,6 +12,23 @@ export class TasksController {
              return this.tasksService.getTasks();
 
             }
-    // 2 ruta
+    // PETICIONES HTTP
+            @Post('/tasks')
+            createTask() {
+                return this.tasksService.createTask();
+            }
+            
+            @Put('/tasks')
+            updateTasks() {
+                return this.tasksService.updateTask();
+            }
+            @Delete('/tasks')
+            deleteTask() {
+                return this.tasksService.deleteTask();
+            }
+            @Patch('/tasks')
+            updateTask() {
+                return this.tasksService.UpdateTaskStatus();
+            }
   
 }
