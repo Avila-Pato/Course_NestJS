@@ -1,16 +1,21 @@
 import { Controller, Get } from '@nestjs/common';
+import { TasksService } from './tasks.service';
 
 @Controller({})
 export class TasksController {
+    tasksService: TasksService;
+
+
+    constructor(private taskService: TasksService) {
+       
+    }
 
     // creando rutas
              @Get('/tasks')
             getAllTasks() {
-        return 'Obteniendo las tareas';
-    }
+             return this.tasksService.getTasks();
+
+            }
     // 2 ruta
-    @Get('/')
-    getHome() {
-        return 'Hola mundo';
-    }
+  
 }
