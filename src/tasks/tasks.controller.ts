@@ -1,6 +1,5 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put, } from '@nestjs/common';
 import { TasksService } from './tasks.service';
-import { parse } from 'path';
 import { CreateTaskDto } from './dto/create-task.to';
 
 @Controller('/tasks')
@@ -21,6 +20,7 @@ export class TasksController {
             }
     // PETICIONES HTTP
             @Post('')
+          
             createTask(@Body() task: CreateTaskDto) {
                 return this.tasksService.createTask(task);
             }

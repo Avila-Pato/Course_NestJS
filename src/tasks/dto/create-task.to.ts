@@ -1,7 +1,15 @@
 // interface 
+import { IsString, min, MinLength, IsNumber, IsBoolean } from "class-validator";
 
-export interface CreateTaskDto {
+export class CreateTaskDto {
+    
+    @IsString()
+    @MinLength(20)
     name: string;
+    
+    @IsNumber( )
     age: number;
+    
+    @IsBoolean()
     description: boolean;
 }
