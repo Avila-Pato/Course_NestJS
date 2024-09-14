@@ -1,9 +1,12 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Body, Injectable, NotFoundException } from '@nestjs/common';
+import { CreateTaskDto } from './dto/create-task.to';
+import { UpdateTaskDto } from './dto/update-task.to copy';
 
 
 export interface User {
     name: string;
     age: number;
+    description: boolean;
 }
 @Injectable()
 export class TasksService {
@@ -24,7 +27,7 @@ export class TasksService {
 
  }
 
-    createTask(task: any) {
+    createTask(task: CreateTaskDto) {
         this.tasks.push({
             ...task, // spread operator
             id: this.tasks.length + 1, // id en suma por creacion de objeto
@@ -32,7 +35,7 @@ export class TasksService {
         return task
 
     }
-    updateTask() {
+     updateTask(@Body() task: UpdateTaskDto) {
         return 'Actuaizando tarea';
     }
     deleteTask() {
