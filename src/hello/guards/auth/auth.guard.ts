@@ -14,9 +14,9 @@ export class RolesGuard implements CanActivate {
     const user = request.user;
 
     // Verifica si el usuario está autenticado
-    if (!user) {
-      throw new UnauthorizedException('No estás autorizado para acceder a este recurso');
-    }
+    // if (user === undefined) {
+    //   throw new UnauthorizedException('No estás autorizado para acceder a este recurso');
+    // }
 
     // Obtiene los roles requeridos para el controlador/método
     const requiredRoles = this.reflector.get<string[]>(ROLES_KEY, context.getHandler());
