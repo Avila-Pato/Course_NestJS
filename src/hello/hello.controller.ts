@@ -1,8 +1,10 @@
-import { Controller, Get, Param, Res, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Param, Res, HttpStatus, UseGuards } from '@nestjs/common';
 import { Response } from 'express';
 import { ParseIntPipe } from '../hello/parse-int.pipe'; // Importa el Pipe personalizado
+import { RolesGuard } from './guards/auth/auth.guard';
 
 @Controller('status')
+@UseGuards(RolesGuard) // Aplica el guard a todas las rutas en este controlador
 export class StatusController {
 
     // Ruta para el estado 200 OK
